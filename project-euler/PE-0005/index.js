@@ -1,10 +1,15 @@
-let n = 10;
-while (true) {
-	found = true;
+for (let n = 10; true; n += 10) {
+	let found = true;
 
-	for (let i = 1; i <= 10; i++) {
-		if ()
+	for (let i = 2; i <= 20; i++) {
+		if (n % i !== 0) {
+			found = false;
+			break;
+		}
 	}
 
-	n += 10;
+	if (found) {
+		console.log(n)
+		break;
+	}
 }
