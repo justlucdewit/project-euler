@@ -1,9 +1,4 @@
-const isPrime = n => {
-	for(let i = 2, s = Math.sqrt(n); i <= s; i++)
-        if(n % i === 0) return false;
-
-    return n > 1;
-};
+const { isPrime } = require("../common");
 
 let n = 1;
 let primes_found = 0;
