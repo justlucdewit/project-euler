@@ -16,7 +16,8 @@ const PE_answers = {
     'PE-0012': 76576500,
     'PE-0013': 5537376230,
     'PE-0014': 837799,
-    'PE-0015': 137846528820
+    'PE-0015': 137846528820,
+    'PE-0016': 1366,
 };
 
 const timeColor = (time) => {
@@ -35,24 +36,23 @@ fs.readdir("./", async function (err, files) {
         files = files.filter(x => x.includes('PE'));
 
         for (const PE of files) {
-            const start_time = Date.now();
-
             const subprocess = exec(`node ${PE}/index.js`, function (_, stdout) {
                 if (stdout) {
                     const answer = PE_answers[PE];
                     const result = Number(stdout.split('\nexecution took ')[0]);
+                    const time_taken = Number(stdout.split('\nexecution took ')[1].split('').filter(x => /[0-9.]/g.test(x)).join(''));
 
                     if (result === answer) {
-                        console.log(`✔️   ${PE} took ${timeColor((Date.now() - start_time) / 1000)} sec`)
+                        console.log(`✔️   ${PE} took ${timeColor(time_taken)} sec`)
                     } else {
-                        console.log(`❌  ${PE} took ${timeColor((Date.now() - start_time) / 1000)} sec`)
+                        console.log(`❌  ${PE} took ${timeColor(time_taken)} sec`)
                     }
                 }
             });
 
             await new Promise((resolve) => {
-                subprocess.on('close', resolve)
-            })
+                subprocess.on('close', resolve);
+            });
         }
     }
 });
