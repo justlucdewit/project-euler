@@ -1,16 +1,18 @@
-const { isPrime } = require("../common");
+const { isPrime, time } = require("../common");
 
-let n = 1;
-let primes_found = 0;
+time(() => {
+    let n = 1;
+    let primes_found = 0;
 
-while (true) {
-    if (isPrime(n))
-        ++primes_found;
-    
-    if (primes_found === 10000)
-        break;
+    while (true) {
+        if (isPrime(n))
+            ++primes_found;
 
-    n += 2; // We can skip 2 because a prime is never even
-}
+        if (primes_found === 10000)
+            break;
 
-console.log(n)
+        n += 2; // We can skip 2 because a prime is never even
+    }
+
+    console.log(n);
+});

@@ -1,8 +1,12 @@
-let sum = 0;
-const max = 1000;
+const { time } = require("../common");
 
-for (let i = 1; i < max; i++)
-	if (i % 3 == 0 || i % 5 == 0)
-    	sum += i
+time(() => {
+	let sum = 0;
+	const max = 1000;
 
-console.log(sum)
+	for (let i = 1; i < max; i++)
+		if (i % 3 == 0 || i % 5 == 0)
+			sum += i
+
+	console.log(sum);
+});

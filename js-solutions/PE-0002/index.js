@@ -1,15 +1,19 @@
-const max = 4000000;
-let a = 1
-let b = 2
-let sum = 2
+const { time } = require("../common");
 
-while (a + b < max) {
-	const newValue = a + b;
-	if (newValue % 2 == 0)
-		sum += newValue;
+time(() => {
+	const max = 4000000;
+	let a = 1
+	let b = 2
+	let sum = 2
 
-	a = b;
-	b = newValue;
-}
+	while (a + b < max) {
+		const newValue = a + b;
+		if (newValue % 2 == 0)
+			sum += newValue;
 
-console.log(sum);
+		a = b;
+		b = newValue;
+	}
+
+	console.log(sum);
+});
