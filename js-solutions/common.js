@@ -107,4 +107,10 @@ const collatzSequenceCount = (n) => {
     return acc;
 };
 
-module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount }
+const factorial = n => n == 1 ? n : n * factorial(n - 1);
+
+const aChooseB = (a, b) => {
+    return factorial(a) / (factorial(b) * factorial(a - b))
+}
+
+module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial }
