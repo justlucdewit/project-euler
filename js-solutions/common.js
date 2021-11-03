@@ -1,3 +1,39 @@
+Array.prototype.sum = function () {
+    return this.reduce((a, b) => a + b);
+}
+
+Array.prototype.select_max = function (predicate = (x) => x) {
+    let max_predicate_value = null;
+    let max_value = null;
+
+    this.forEach(val => {
+        predicate_value = predicate(val);
+
+        if (predicate_value > max_predicate_value || max_predicate_value == null) {
+            max_predicate_value = predicate_value;
+            max_value = val;
+        }
+    });
+
+    return max_value;
+}
+
+Array.prototype.select_min = function (predicate = (x) => x) {
+    let min_predicate_value = null;
+    let min_value = null;
+
+    this.forEach(val => {
+        predicate_value = predicate(val);
+
+        if (predicate_value < min_predicate_value || min_predicate_value == null) {
+            min_predicate_value = predicate_value;
+            min_value = val;
+        }
+    });
+
+    return min_value;
+}
+
 const range = (start, stop, step = 1) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + (i * step));
 
 const isPrime = n => {
@@ -8,10 +44,6 @@ const isPrime = n => {
 };
 
 const isPythTriplet = (a, b, c) => Math.sqrt(a ** 2 + b ** 2) === c;
-
-Array.prototype.sum = function () {
-    return this.reduce((a, b) => a + b);
-}
 
 const nthTriangleNum = (n) => range(1, n).sum()
 
@@ -51,4 +83,28 @@ const time = (predicate, test_perf = 1) => {
     }
 }
 
-module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time }
+const collatzSequence = (n) => {
+    const acc = [n];
+
+    while (n !== 1) {
+        // collartz alg
+        n = n % 2 == 0 ? n / 2 : 3 * n + 1;
+        acc.push(n);
+    }
+
+    return acc
+};
+
+const collatzSequenceCount = (n) => {
+    let acc = 0;
+
+    while (n !== 1) {
+        // collartz alg
+        n = n % 2 == 0 ? n / 2 : 3 * n + 1;
+        ++acc;
+    }
+
+    return acc;
+};
+
+module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount }

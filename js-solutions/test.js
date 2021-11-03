@@ -14,8 +14,15 @@ const PE_answers = {
     'PE-0010': 142913828922,
     'PE-0011': 70600674,
     'PE-0012': 76576500,
-    'PE-0013': 5537376230
+    'PE-0013': 5537376230,
+    'PE-0014': 837799
 };
+
+const timeColor = (time) => {
+    return time >= 1 ?
+        `\x1b[31m${time}\x1b[0m` :
+        `\x1b[32m${time}\x1b[0m`;
+}
 
 // Get a list of all the PE problems
 fs.readdir("./", async function (err, files) {
@@ -27,15 +34,17 @@ fs.readdir("./", async function (err, files) {
         files = files.filter(x => x.includes('PE'));
 
         for (const PE of files) {
+            const start_time = Date.now();
+
             const subprocess = exec(`node ${PE}/index.js`, function (_, stdout) {
                 if (stdout) {
                     const answer = PE_answers[PE];
                     const result = Number(stdout.split('\nexecution took ')[0]);
 
                     if (result === answer) {
-                        console.log(`✔️   ${PE}`)
+                        console.log(`✔️   ${PE} took ${timeColor((Date.now() - start_time) / 1000)} sec`)
                     } else {
-                        console.log(`❌  ${PE}`)
+                        console.log(`❌  ${PE} took ${timeColor((Date.now() - start_time) / 1000)} sec`)
                     }
                 }
             });
