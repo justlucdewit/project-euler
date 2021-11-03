@@ -20,18 +20,20 @@ execution took 0.021sec
 ```
 > node test.js
 
-✔️   PE-0001 took 0.297 sec
-✔️   PE-0002 took 0.266 sec
-✔️   PE-0003 took 4.009 sec
-✔️   PE-0004 took 0.719 sec
-✔️   PE-0005 took 0.954 sec
-✔️   PE-0006 took 0.328 sec
-✔️   PE-0007 took 0.362 sec
-✔️   PE-0008 took 0.38 sec
-✔️   PE-0009 took 2.621 sec
-✔️   PE-0010 took 2.126 sec
-✔️   PE-0011 took 0.235 sec
-✔️   PE-0012 took 0.804 sec
-✔️   PE-0013 took 0.237 sec
-✔️   PE-0014 took 4.023 sec
+🟢   PE-0001 took 0.002 sec
+🟢   PE-0002 took 0.002 sec
+🟢   PE-0003 took 0.597 sec
+🟢   PE-0004 took 0.189 sec
+🟢   PE-0005 took 0.233 sec
+🟢   PE-0006 took 0.002 sec
+🟢   PE-0007 took 0.018 sec
+🟢   PE-0008 took 0.002 sec
+🟢   PE-0009 took 0.624 sec
+🟢   PE-0010 took 0.969 sec
+🟢   PE-0011 took 0.003 sec
+🟢   PE-0012 took 0.276 sec
+🟢   PE-0013 took 0.001 sec
+🟢   PE-0014 took 1.632 sec
+🟢   PE-0015 took 0.001 sec
+🟢   PE-0016 took 0.002 sec
 ```

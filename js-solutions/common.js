@@ -113,4 +113,82 @@ const aChooseB = (a, b) => {
     return factorial(a) / (factorial(b) * factorial(a - b))
 }
 
-module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial }
+// Only works for numbers 0 - 1000 (inclusive)
+const wordifyNumber = n => {
+    baseNumbers = {
+        0: "zero",
+        1: "one",
+        2: "two",
+        3: "three",
+        4: "four",
+        5: "five",
+        6: "six",
+        7: "seven",
+        8: "eight",
+        9: "nine",
+    }
+
+    baseNumbers2 = {
+        1: null,
+        2: "twenty",
+        3: "thirty",
+        4: "forty",
+        5: "fifty",
+        6: "sixty",
+        7: "seventy",
+        8: "eighty",
+        9: "ninety",
+    }
+
+   baseNumber2Exceptions = {
+       0: "ten",
+       1: "eleven",
+       2: "twelve",
+       3: "thirteen",
+       4: "fourteen",
+       5: "fifteen",
+       6: "sixteen",
+       7: "seventeen",
+       8: "eighteen",
+       9: "nineteen",
+   }
+
+    if (n === 1000) {
+        return "one thousand"
+    }
+
+    n = n.toString();
+    buffer = "";
+
+    if (n.length === 3) {
+        buffer += `${baseNumbers[Number(n[0])]} hundred`
+
+        if (Number(n[1]) > 1) {
+            buffer += ` and ${baseNumbers2[Number(n[1])]}`;
+
+            if (Number(n[2]) > 0) {
+                buffer += `-${baseNumbers[Number(n[2])]}`
+            }
+        } else if (Number(n[1]) === 0 && Number(n[2]) !== 0) {
+            buffer += ` and ${baseNumbers[Number(n[2])]}`;
+        } else if (!(Number(n[1]) === 0 && Number(n[2]) === 0)){
+            buffer += ` and ${baseNumber2Exceptions[Number(n[2])]}`
+        }
+    } else if (n.length === 1) {
+        buffer += baseNumbers[Number(n[0])]
+    } else if (n.length === 2) {
+        if (Number(n[0] > 1)) {
+            buffer += baseNumbers2[Number(n[0])];
+
+            if (Number(n[1] > 0)) {
+                buffer += `-${baseNumbers[Number(n[1])]}`
+            }
+        } else {
+            buffer = baseNumber2Exceptions[Number(n[1])]
+        }
+    }
+
+    return buffer;
+}
+
+module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial, wordifyNumber }

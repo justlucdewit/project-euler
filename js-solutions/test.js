@@ -18,6 +18,7 @@ const PE_answers = {
     'PE-0014': 837799,
     'PE-0015': 137846528820,
     'PE-0016': 1366,
+    'PE-0017': 21124,
 };
 
 const timeColor = (time) => {
@@ -43,9 +44,9 @@ fs.readdir("./", async function (err, files) {
                     const time_taken = Number(stdout.split('\nexecution took ')[1].split('').filter(x => /[0-9.]/g.test(x)).join(''));
 
                     if (result === answer) {
-                        console.log(`✔️   ${PE} took ${timeColor(time_taken)} sec`)
+                        console.log(`🟢   ${PE} took ${timeColor(time_taken)} sec`)
                     } else {
-                        console.log(`❌  ${PE} took ${timeColor(time_taken)} sec`)
+                        console.log(`🔴   ${PE} took ${timeColor(time_taken)} sec`)
                     }
                 }
             });
