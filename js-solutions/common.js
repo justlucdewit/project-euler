@@ -140,18 +140,18 @@ const wordifyNumber = n => {
         9: "ninety",
     }
 
-   baseNumber2Exceptions = {
-       0: "ten",
-       1: "eleven",
-       2: "twelve",
-       3: "thirteen",
-       4: "fourteen",
-       5: "fifteen",
-       6: "sixteen",
-       7: "seventeen",
-       8: "eighteen",
-       9: "nineteen",
-   }
+    baseNumber2Exceptions = {
+        0: "ten",
+        1: "eleven",
+        2: "twelve",
+        3: "thirteen",
+        4: "fourteen",
+        5: "fifteen",
+        6: "sixteen",
+        7: "seventeen",
+        8: "eighteen",
+        9: "nineteen",
+    }
 
     if (n === 1000) {
         return "one thousand"
@@ -171,7 +171,7 @@ const wordifyNumber = n => {
             }
         } else if (Number(n[1]) === 0 && Number(n[2]) !== 0) {
             buffer += ` and ${baseNumbers[Number(n[2])]}`;
-        } else if (!(Number(n[1]) === 0 && Number(n[2]) === 0)){
+        } else if (!(Number(n[1]) === 0 && Number(n[2]) === 0)) {
             buffer += ` and ${baseNumber2Exceptions[Number(n[2])]}`
         }
     } else if (n.length === 1) {
@@ -191,4 +191,8 @@ const wordifyNumber = n => {
     return buffer;
 }
 
-module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial, wordifyNumber }
+// A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.
+const yearIsLeap = year =>
+    year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+
+module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial, wordifyNumber, yearIsLeap }
