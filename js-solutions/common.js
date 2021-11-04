@@ -109,6 +109,8 @@ const collatzSequenceCount = (n) => {
 
 const factorial = n => n == 1 ? n : n * factorial(n - 1);
 
+const bigint_factorial = n => n == 1 ? n : n * bigint_factorial(n - BigInt(1));
+
 const aChooseB = (a, b) => {
     return factorial(a) / (factorial(b) * factorial(a - b))
 }
@@ -195,4 +197,4 @@ const wordifyNumber = n => {
 const yearIsLeap = year =>
     year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
 
-module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial, wordifyNumber, yearIsLeap }
+module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial, wordifyNumber, yearIsLeap, bigint_factorial }
