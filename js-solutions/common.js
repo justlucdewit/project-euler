@@ -50,11 +50,13 @@ const nthTriangleNum = (n) => range(1, n).sum()
 const divisors = (n) => {
     let acc = [];
 
-    for (let i = Math.sqrt(n); i > 1; i--)
+    for (let i = 1; i < Math.ceil(n / 2) + 1; i++)
         if (n % i === 0)
             acc.push(i);
 
-    return [n, ...acc, 1];
+    acc.push(n)
+
+    return acc;
 }
 
 const divisorsCount = (n) => {
@@ -197,4 +199,14 @@ const wordifyNumber = n => {
 const yearIsLeap = year =>
     year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
 
-module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial, wordifyNumber, yearIsLeap, bigint_factorial }
+// Function to test if n is amicable
+// with d() as helper function
+
+// d(n) is defined as the sum of the proper divisors of n
+// (proper divisors = numbers less than n which divide
+// evenly into n)
+const d = n => divisors(n).sum() - n;
+const isAmicable = n =>
+    d(d(n)) == n && n !== d(n);
+
+module.exports = { range, isPrime, isPythTriplet, nthTriangleNum, divisors, divisorsCount, time, collatzSequence, collatzSequenceCount, aChooseB, factorial, wordifyNumber, yearIsLeap, bigint_factorial, isAmicable }
