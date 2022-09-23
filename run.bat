@@ -1,0 +1,1 @@
+node js-solutions/PE-%1/index.js

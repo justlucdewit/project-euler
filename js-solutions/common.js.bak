@@ -82,7 +82,7 @@ const sumOfDivisors = n => {
 	if (n > 1)
 		prod *= 1 + n;
 	
-	return prod / 2;
+	return prod /2;
 }
 
 const isAbundant = n => sumOfDivisors(n) > n;
